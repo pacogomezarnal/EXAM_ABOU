@@ -1,5 +1,6 @@
 package Vistas;
 
+import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -97,13 +98,7 @@ public class PerfilEquipo extends JPanel {
 		add(textField_4);
 		textField_4.setColumns(10);
 		
-		JButton btnAtras = new JButton("Atras");
-		btnAtras.setBounds(59, 252, 89, 23);
-		add(btnAtras);
-		
-		JButton btnSiguiente = new JButton("Siguiente");
-		btnSiguiente.setBounds(316, 252, 89, 23);
-		add(btnSiguiente);
+	
 		
 	
 		
@@ -121,8 +116,38 @@ public class PerfilEquipo extends JPanel {
 		textField_4.setText(this.cadeteSeleccionado.getNacionalidad());
 	}
 	
-	
+	private void boton(){
+		
+		JButton btnAtras = new JButton("Atras");
+		btnAtras.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				accionBotonAtras();
+			}
+		});
+		btnAtras.setBounds(59, 252, 89, 23);
+		add(btnAtras);
+		
+		JButton btnSiguiente = new JButton("Siguiente");
+		btnSiguiente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				accionBotonSiguiente();
+			}
+		});
+		btnSiguiente.setBounds(316, 252, 89, 23);
+		add(btnSiguiente);
 	}
+	
+private void accionBotonAtras(){
+	//CAMBIO DE PANEL RECOGIENDO EL CONTENEDOR DEL FRAME (CARDLAYOUT)
+	CardLayout layout = (CardLayout) principal.getContentPane().getLayout();
+	layout.show(principal.getContentPane(), "PanelUsuario");
+}
+
+private void accionBotonSiguiente(){
+	CardLayout layout = (CardLayout) principal.getContentPane().getLayout();
+	layout.show(principal.getContentPane(), "PanelComprobacion");
+}
+}
 	
 	
 	/*private void volcadoDatos(){
